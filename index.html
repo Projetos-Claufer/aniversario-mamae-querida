@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#151127">
+<meta name="description" content="Cartão de aniversário para mamãe querida, com música especial e homenagem de Fernanda e Jean.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="🎂 Uma surpresa para mamãe querida ❤️">
+<meta property="og:description" content="Mamãe, preparamos uma surpresa de aniversário cheia de carinho! Toque no presente para abrir.">
+<meta name="twitter:card" content="summary">
+<title>Para Mamãe Querida — Feliz Aniversário! — Fernanda e Jean</title>
+<style>
+  :root { color-scheme: dark; --gold:#f7d58d; --cream:#fff9ed; }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; min-height:100svh; overflow-x:hidden;
+    font-family:'Trebuchet MS','Segoe UI',Arial,sans-serif; color:var(--cream);
+    -webkit-text-size-adjust:100%;
+    background:
+      radial-gradient(ellipse 60% 45% at 10% 15%,rgba(147,83,179,.36),transparent 75%),
+      radial-gradient(ellipse 58% 48% at 91% 68%,rgba(71,83,182,.35),transparent 75%),
+      linear-gradient(145deg,#271c49 0%,#151127 56%,#211c41 100%);
+    background-attachment:fixed;
+  }
+  .aurora {position:fixed;inset:-20%;pointer-events:none;z-index:0;background:radial-gradient(circle at 60% 30%,rgba(255,159,212,.12),transparent 37%);filter:blur(24px);animation:aurora 9s ease-in-out infinite alternate;}
+  @keyframes aurora {to {transform:translate(-5%,6%) scale(1.1);}}
+  #confetti {position:fixed;inset:0;pointer-events:none;z-index:20;width:100%;height:100%;}
+
+  .stars {position:fixed;inset:0;z-index:0;pointer-events:none;}
+  .stars i {position:absolute;width:3px;height:3px;background:#fff4d3;border-radius:50%;box-shadow:0 0 9px rgba(255,240,180,.8);animation:twinkle 3s ease-in-out infinite alternate;}
+  @keyframes twinkle {0%{opacity:.12;transform:scale(.6);}100%{opacity:.95;transform:scale(1.4);}}
+
+  .scene {position:relative;z-index:1;min-height:100svh;display:grid;place-items:center;padding:32px 18px 120px;}
+  .balloon {position:fixed;width:94px;height:119px;border-radius:53% 53% 49% 49%;opacity:.88;filter:drop-shadow(0 18px 18px rgba(0,0,0,.15));animation:float 6s ease-in-out infinite;z-index:0;}
+  .balloon::before {content:"";position:absolute;inset:13px auto auto 19px;width:18px;height:39px;transform:rotate(26deg);border-radius:50%;background:rgba(255,255,255,.27);filter:blur(5px);}
+  .balloon::after {content:"";position:absolute;top:100%;left:calc(50% - 6px);width:12px;height:10px;background:inherit;clip-path:polygon(50% 0,0 100%,100% 100%);}
+  .balloon i {position:absolute;top:calc(100% + 10px);left:50%;width:1px;height:96px;background:linear-gradient(#dfc6f4,transparent);transform:rotate(8deg);transform-origin:top;}
+  .b1 {background:radial-gradient(circle at 30% 23%,#fce9b1,#d8a24e 74%);left:max(3%,calc(50% - 480px));top:11%;}
+  .b2 {background:radial-gradient(circle at 30% 23%,#ffb8d9,#cb6caa 78%);left:max(1%,calc(50% - 530px));top:52%;width:75px;height:98px;animation-delay:-2.2s;}
+  .b3 {background:radial-gradient(circle at 30% 23%,#c9b9ff,#7869cb 78%);right:max(3%,calc(50% - 480px));top:14%;animation-delay:-1s;}
+  .b4 {background:radial-gradient(circle at 30% 23%,#a9f0e6,#4fa7b0 78%);right:max(1%,calc(50% - 520px));bottom:18%;width:72px;height:94px;animation-delay:-4s;}
+  @keyframes float {0%,100%{translate:0 0;}50%{translate:0 -18px;}}
+
+  .panel {position:relative;width:min(100%,640px);text-align:center;border:1px solid rgba(255,231,185,.34);border-radius:30px;
+    padding:clamp(28px,6vw,56px) clamp(22px,7vw,62px) 34px;
+    background:linear-gradient(160deg,rgba(87,67,117,.6),rgba(43,32,73,.84) 52%,rgba(27,25,56,.8));
+    box-shadow:0 35px 90px rgba(10,7,28,.36),inset 0 1px 0 rgba(255,255,255,.12);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);animation:appear .9s both ease-out;}
+  .panel::before {content:"";position:absolute;inset:12px;border-radius:22px;border:1px solid rgba(255,220,150,.12);pointer-events:none;}
+  @keyframes appear {from{opacity:0;transform:translateY(22px) scale(.98);}to{opacity:1;transform:none;}}
+
+  .eyebrow {display:flex;align-items:center;justify-content:center;gap:12px;letter-spacing:.23em;font-size:12px;text-transform:uppercase;font-weight:bold;color:var(--gold);}
+  .eyebrow::before,.eyebrow::after {content:"";height:1px;width:31px;background:linear-gradient(90deg,transparent,var(--gold));}
+  .eyebrow::after {transform:rotate(180deg);}
+
+  /* Tela do presente */
+  .gift-btn {all:unset;cursor:pointer;display:block;margin:22px auto 10px;font-size:clamp(96px,26vw,140px);line-height:1;
+    filter:drop-shadow(0 18px 24px rgba(0,0,0,.3));animation:giftFloat 2.6s ease-in-out infinite;-webkit-tap-highlight-color:transparent;}
+  .gift-btn:focus-visible {outline:3px solid white;outline-offset:8px;border-radius:20px;}
+  @keyframes giftFloat {0%,100%{transform:translateY(0) rotate(0);}25%{transform:translateY(-8px) rotate(-6deg);}75%{transform:translateY(-8px) rotate(6deg);}}
+  .gift-btn.opening {animation:giftOpen .6s ease-in forwards;}
+  @keyframes giftOpen {to{transform:scale(1.6) rotate(12deg);opacity:0;}}
+  .welcome h2 {margin:8px 0 6px;color:#ffe1a3;font-family:Georgia,serif;font-weight:normal;font-size:clamp(32px,7vw,52px);line-height:1.12;letter-spacing:-.03em;}
+  .tap {display:inline-block;margin-top:10px;padding:13px 26px;border-radius:999px;border:1px solid rgba(255,227,180,.7);
+    background:linear-gradient(135deg,#ffe3aa,#efbb6c);color:#332146;font-weight:800;font-size:16px;cursor:pointer;animation:pulse 1.8s ease-in-out infinite;}
+  @keyframes pulse {50%{box-shadow:0 0 0 12px rgba(247,213,141,0);transform:scale(1.04);}0%,100%{box-shadow:0 0 0 0 rgba(247,213,141,.45);}}
+  .hint {font-size:13px;color:#ded5ec;margin:16px 0 0;}
+
+  /* Cartão */
+  h1 {margin:16px auto 4px;font-family:Georgia,serif;font-weight:normal;line-height:1.08;font-size:clamp(45px,8vw,77px);letter-spacing:-.045em;color:#ffe1a3;}
+  h1 span {display:block;color:#fff9ec;}
+  .ornament {font-size:24px;color:var(--gold);letter-spacing:15px;margin:9px -15px 1px 0;opacity:.85;}
+  .cake {display:block;width:min(100%,235px);height:auto;margin:10px auto 8px;overflow:visible;filter:drop-shadow(0 20px 24px rgba(0,0,0,.2));}
+  .flame {transform-box:fill-box;transform-origin:center bottom;animation:flicker 1.3s ease-in-out infinite alternate;}
+  @keyframes flicker {0%{transform:rotate(-5deg) scale(.94);}100%{transform:rotate(7deg) scale(1.09);}}
+  .message p {max-width:490px;margin:0 auto 14px;color:#f0e9f5;font-size:clamp(15px,2.6vw,18px);line-height:1.8;opacity:0;transform:translateY(10px);transition:opacity 1s, transform 1s;}
+  .message p.show {opacity:1;transform:none;}
+  .divider {display:flex;align-items:center;gap:18px;justify-content:center;color:var(--gold);font-size:19px;margin:10px auto 16px;}
+  .divider::before,.divider::after {content:"";height:1px;max-width:108px;flex:1;background:linear-gradient(90deg,transparent,rgba(252,217,158,.5));}
+  .divider::after {transform:rotate(180deg);}
+  .from {margin:0;color:#dfd0e6;font-size:13px;letter-spacing:.14em;text-transform:uppercase;}
+  .sign {margin:6px 0 18px;color:#ffdc9b;font-size:clamp(30px,5vw,40px);font-family:'Brush Script MT','Segoe Script',Georgia,serif;font-style:italic;}
+  .footer {font-size:12px;color:#b4a6cd;margin:14px 0 0;letter-spacing:.08em;}
+  .again {all:unset;cursor:pointer;color:#ffe1a3;font-size:13px;text-decoration:underline;text-underline-offset:5px;margin-top:16px;display:inline-block;}
+
+  /* Player flutuante */
+  .player {position:fixed;z-index:10;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);
+    display:flex;align-items:center;gap:12px;padding:9px 16px 9px 9px;border-radius:999px;
+    background:rgba(37,28,61,.92);border:1px solid rgba(255,231,185,.34);box-shadow:0 12px 40px rgba(0,0,0,.4);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:13px;color:#ffe1a3;}
+  .player button {all:unset;cursor:pointer;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:17px;
+    background:linear-gradient(135deg,#f6d797,#e8b86b);color:#322447;}
+  .player button:focus-visible {outline:3px solid white;outline-offset:3px;}
+  .bars {display:flex;gap:3px;align-items:flex-end;height:16px;}
+  .bars i {width:3px;background:var(--gold);border-radius:2px;animation:bar .9s ease-in-out infinite alternate;}
+  .bars i:nth-child(2){animation-delay:-.3s}.bars i:nth-child(3){animation-delay:-.6s}.bars i:nth-child(4){animation-delay:-.15s}
+  @keyframes bar {from{height:3px}to{height:16px}}
+  .player.paused .bars i {animation-play-state:paused;}
+
+  [hidden] {display:none !important;}
+  @media(max-width:600px){.balloon{opacity:.35;scale:.75}.b1{left:-39px;top:4%}.b2{left:-40px;top:60%}.b3{right:-35px;top:8%}.b4{right:-35px;bottom:6%}.panel{border-radius:24px}.cake{width:180px}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.message p{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true" id="stars"></div>
+<div aria-hidden="true">
+  <div class="balloon b1"><i></i></div><div class="balloon b2"><i></i></div>
+  <div class="balloon b3"><i></i></div><div class="balloon b4"><i></i></div>
+</div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<audio id="music" src="musica.mp3" preload="auto" loop></audio>
+
+<main>
+  <!-- Tela 1: presente fechado -->
+  <section class="scene" id="welcome">
+    <div class="panel welcome">
+      <div class="eyebrow">Para mamãe querida</div>
+      <button class="gift-btn" id="gift" aria-label="Abrir o presente">🎁</button>
+      <h2>Preparamos uma<br>surpresa para você!</h2>
+      <span class="tap" id="tap" role="button" tabindex="0">💝 Toque no presente para abrir</span>
+      <p class="hint">Aumente o volume 🔊 — tem música!</p>
+    </div>
+  </section>
+
+  <!-- Tela 2: cartão -->
+  <section class="scene" id="card" hidden>
+    <article class="panel" aria-label="Cartão de aniversário">
+      <div class="eyebrow">Para mamãe querida</div>
+      <h1>Feliz <span>Aniversário!</span></h1>
+      <div class="ornament" aria-hidden="true">✦ ✧ ✦</div>
+      <svg class="cake" viewBox="0 0 290 238" role="img" aria-label="Bolo de aniversário com velas acesas">
+        <defs>
+          <linearGradient id="plate" x1="0" x2="1"><stop stop-color="#d7b5dc"/><stop offset=".5" stop-color="#ffffff"/><stop offset="1" stop-color="#a38ac4"/></linearGradient>
+          <linearGradient id="cakeSide" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffb2c0"/><stop offset="1" stop-color="#e779a3"/></linearGradient>
+          <linearGradient id="cream" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#fff6e9"/><stop offset="1" stop-color="#ffcfdd"/></linearGradient>
+          <radialGradient id="glow"><stop stop-color="#fff1b5" stop-opacity=".85"/><stop offset="1" stop-color="#ffe9ac" stop-opacity="0"/></radialGradient>
+        </defs>
+        <ellipse cx="145" cy="210" rx="122" ry="17" fill="rgba(6,6,25,.28)"/>
+        <ellipse cx="145" cy="204" rx="123" ry="17" fill="url(#plate)"/>
+        <ellipse cx="145" cy="201" rx="109" ry="10" fill="#fff3e9"/>
+        <rect x="50" y="132" width="190" height="65" rx="18" fill="url(#cakeSide)"/>
+        <path d="M50 148 Q55 160 63 149 Q72 134 80 152 Q88 166 96 150 Q104 140 115 153 Q123 163 131 150 Q140 138 150 154 Q159 167 168 149 Q178 138 187 154 Q198 170 207 149 Q217 136 226 151 Q233 159 240 146 L240 133 Q145 105 50 132Z" fill="url(#cream)"/>
+        <ellipse cx="145" cy="130" rx="95" ry="23" fill="#fff1e8"/>
+        <rect x="85" y="79" width="120" height="57" rx="12" fill="#f3aac0"/>
+        <path d="M85 91 Q91 106 99 90 Q105 79 113 98 Q120 110 129 91 Q137 82 145 98 Q154 111 161 92 Q171 77 181 98 Q190 113 197 93 L205 89 L205 80 Q145 57 85 79Z" fill="url(#cream)"/>
+        <ellipse cx="145" cy="78" rx="60" ry="16" fill="#fff7eb"/>
+        <g fill="#f5c36a"><circle cx="70" cy="176" r="3.4"/><circle cx="95" cy="183" r="3.4"/><circle cx="120" cy="173" r="3.4"/><circle cx="145" cy="181" r="3.4"/><circle cx="170" cy="173" r="3.4"/><circle cx="195" cy="183" r="3.4"/><circle cx="221" cy="176" r="3.4"/></g>
+        <g fill="#fff9e7" opacity=".9"><circle cx="107" cy="117" r="2.8"/><circle cx="133" cy="122" r="2.8"/><circle cx="158" cy="118" r="2.8"/><circle cx="185" cy="123" r="2.8"/></g>
+        <g><rect x="113" y="41" width="10" height="34" rx="3" fill="#a2e6dd"/><path d="M113 51h10M113 63h10" stroke="#fff" stroke-width="3"/><rect x="140" y="35" width="10" height="38" rx="3" fill="#e8b4fa"/><path d="M140 45h10M140 57h10" stroke="#fff" stroke-width="3"/><rect x="167" y="41" width="10" height="34" rx="3" fill="#f5c36a"/><path d="M167 51h10M167 63h10" stroke="#fff" stroke-width="3"/></g>
+        <g><circle cx="118" cy="33" r="22" fill="url(#glow)"/><circle cx="145" cy="26" r="23" fill="url(#glow)"/><circle cx="172" cy="33" r="22" fill="url(#glow)"/></g>
+        <g class="flame"><path d="M118 38 Q108 29 118 14 Q128 28 118 38Z" fill="#ffd064"/><path d="M118 36 Q114 30 118 22 Q122 30 118 36Z" fill="#fff9ca"/></g>
+        <g class="flame" style="animation-delay:-.5s"><path d="M145 32 Q135 21 145 6 Q155 21 145 32Z" fill="#ffd064"/><path d="M145 30 Q141 24 145 15 Q149 24 145 30Z" fill="#fff9ca"/></g>
+        <g class="flame" style="animation-delay:-.9s"><path d="M172 38 Q162 29 172 14 Q182 28 172 38Z" fill="#ffd064"/><path d="M172 36 Q168 30 172 22 Q176 30 172 36Z" fill="#fff9ca"/></g>
+        <g fill="#f9d791"><path d="M34 82l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path d="M254 56l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M258 153l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/></g>
+      </svg>
+      <div class="message" id="message">
+        <p>Mamãe, hoje o dia é todo seu! 🎉</p>
+        <p>Que seu novo ciclo seja iluminado por <strong>alegrias, saúde, amor e sonhos realizados.</strong></p>
+        <p>Que a vida lhe presenteie com momentos inesquecíveis, pessoas especiais e muitos motivos para sorrir.</p>
+        <p>Você merece tudo de mais bonito que o mundo tem a oferecer. Te amamos! ❤️</p>
+      </div>
+      <div class="divider" aria-hidden="true">♥</div>
+      <p class="from">Com muito carinho,</p>
+      <p class="sign">Fernanda &amp; Jean</p>
+      <p class="footer">Que a felicidade seja sempre a melhor companhia ✨</p>
+      <button class="again" id="again">🎉 Soltar confete de novo</button>
+    </article>
+  </section>
+</main>
+
+<div class="player" id="player" hidden>
+  <button id="toggle" aria-label="Pausar música">⏸</button>
+  <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  <span>Nossa música especial 🎶</span>
+</div>
+
+<script>
+  // Estrelas
+  const stars = document.getElementById('stars');
+  for (let i = 0; i < 40; i++) {
+    const s = document.createElement('i');
+    s.style.top = Math.random() * 100 + '%';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.animationDelay = (Math.random() * 3).toFixed(2) + 's';
+    stars.appendChild(s);
+  }
+
+  const music = document.getElementById('music');
+  const player = document.getElementById('player');
+  const toggle = document.getElementById('toggle');
+  let opened = false;
+
+  function setPlaying(on) {
+    player.classList.toggle('paused', !on);
+    toggle.textContent = on ? '⏸' : '▶';
+    toggle.setAttribute('aria-label', on ? 'Pausar música' : 'Tocar música');
+  }
+
+  function openGift() {
+    if (opened) return;
+    opened = true;
+    // O toque da pessoa libera o áudio (exigência de todos os navegadores).
+    music.volume = 1;
+    music.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    player.hidden = false;
+
+    document.getElementById('gift').classList.add('opening');
+    setTimeout(() => {
+      document.getElementById('welcome').hidden = true;
+      document.getElementById('card').hidden = false;
+      window.scrollTo(0, 0);
+      confetti();
+      document.querySelectorAll('#message p').forEach((p, i) =>
+        setTimeout(() => p.classList.add('show'), 600 + i * 1400));
+    }, 550);
+  }
+
+  document.getElementById('gift').addEventListener('click', openGift);
+  const tap = document.getElementById('tap');
+  tap.addEventListener('click', openGift);
+  tap.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openGift(); } });
+
+  toggle.addEventListener('click', () => {
+    if (music.paused) music.play().then(() => setPlaying(true)).catch(() => {});
+    else { music.pause(); setPlaying(false); }
+  });
+  document.getElementById('again').addEventListener('click', confetti);
+
+  // Confete
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  let pieces = [], running = false;
+  function resize() { canvas.width = innerWidth * devicePixelRatio; canvas.height = innerHeight * devicePixelRatio; }
+  addEventListener('resize', resize); resize();
+
+  function confetti() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const colors = ['#f7d58d', '#ffb8d9', '#c9b9ff', '#a9f0e6', '#ffffff', '#e8b86b'];
+    const d = devicePixelRatio;
+    for (let i = 0; i < 160; i++) {
+      pieces.push({
+        x: canvas.width / 2 + (Math.random() - .5) * 80 * d,
+        y: canvas.height * .45,
+        vx: (Math.random() - .5) * 18 * d,
+        vy: (-Math.random() * 16 - 6) * d,
+        w: (6 + Math.random() * 6) * d, h: (8 + Math.random() * 8) * d,
+        r: Math.random() * 6, vr: (Math.random() - .5) * .3,
+        c: colors[(Math.random() * colors.length) | 0]
+      });
+    }
+    if (!running) { running = true; requestAnimationFrame(tick); }
+  }
+
+  function tick() {
+    const d = devicePixelRatio;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pieces = pieces.filter(p => p.y < canvas.height + 40 * d);
+    for (const p of pieces) {
+      p.vy += .35 * d; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.r * 2)));
+      ctx.restore();
+    }
+    if (pieces.length) requestAnimationFrame(tick); else { running = false; ctx.clearRect(0, 0, canvas.width, canvas.height); }
+  }
+</script>
+</body>
+</html>
